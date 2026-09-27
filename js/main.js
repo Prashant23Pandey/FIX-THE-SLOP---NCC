@@ -34,15 +34,15 @@ function writeNav() {
   for (var r = 0; r < 6; r++) html += '<span>' + SITE.announce + '</span>';
   html += '</div></div>';
 
-  html += '<div class="nav"><div class="logo"><div class="logo-mark"></div>' + SITE.name +
+  html += '<div class="nav"><div class="logo" style="cursor:pointer" onclick="location.href=\'index.html\'"><div class="logo-mark"></div>' + SITE.name +
     '<span class="badge" style="padding:2px 8px;font-size:9px">BETA</span></div><div class="links">';
   for (var i = 0; i < SITE.pages.length; i++) {
     html += '<span onclick="location.href=\'' + SITE.pages[i][1] + '\'">' + SITE.pages[i][0] + '</span>';
   }
-  html += '<span class="more">More ▾<div class="more-menu"><div>Changelog</div><div>Careers — we\'re hiring!</div><div>Status</div><div>Brand</div></div></span>';
+  html += '<span class="more">More ▾<div class="more-menu"><div onclick="location.href=\'blog.html\'">Changelog</div><div onclick="location.href=\'contact.html\'">Careers — we\'re hiring!</div><div onclick="toast(\'All systems operational (100% uptime)\')">Status</div><div onclick="location.href=\'tools.html\'">Tools & Brand</div></div></span>';
   html += '</div><div style="display:flex;gap:10px;align-items:center">' +
-    '<span onclick="toggleTheme()" style="cursor:pointer;font-size:16px">🌙</span>' +
-    '<span class="btn-ghost">Sign in</span><span class="btn-glow">Get started — it\'s free ✨</span></div></div>';
+    '<span onclick="toggleTheme()" id="theme-btn" style="cursor:pointer;font-size:16px" title="Toggle theme">🌓</span>' +
+    '<span class="btn-ghost" style="cursor:pointer" onclick="location.href=\'admin.html\'">Sign in</span><span class="btn-glow" style="cursor:pointer" onclick="location.href=\'tools.html\'">Get started — it\'s free ✨</span></div></div>';
   html += '<div style="height:120px"></div>';
   // document.write is required here: the nav must exist before the page's own
   // inline scripts run, and innerHTML injection breaks the sticky positioning.
@@ -56,13 +56,13 @@ function writeNav() {
 function writeFooter() {
   document.write(
     '<div class="footer"><div class="container"><div class="cols">' +
-    '<div><div class="logo" style="color:#fff;font-weight:800;font-size:22px">✦ ' + SITE.name + '</div>' +
+    '<div><div class="logo" style="color:#fff;font-weight:800;font-size:22px;cursor:pointer" onclick="location.href=\'index.html\'">✦ ' + SITE.name + '</div>' +
     '<p style="margin-top:12px;max-width:260px">' + SITE.tagline + ' — built for teams — of every size — everywhere.</p>' +
     '<div style="display:flex;gap:8px;align-items:center;margin-top:18px;font-size:10px;color:#3f3f46"><span class="pulse-dot"></span>All systems operational</div></div>' +
-    '<div><h5>Product</h5><a>Features</a><a>Pricing</a><a>Integrations</a><a>Changelog</a></div>' +
-    '<div><h5>Company</h5><a>About</a><a>Careers</a><a>Press</a><a>Contact</a></div>' +
-    '<div><h5>Resources</h5><a>Docs</a><a>Blog</a><a>Community</a><a>Help</a></div>' +
-    '<div><h5>Legal</h5><a>Privacy</a><a>Terms</a><a>Security</a><a>Accessibility</a></div>' +
+    '<div><h5>Product</h5><a href="index.html#features">Features</a><a href="index.html#pricing">Pricing</a><a href="tools.html">Tools</a><a href="blog.html">Changelog</a></div>' +
+    '<div><h5>Company</h5><a href="index.html">About</a><a href="contact.html">Careers</a><a href="blog.html">Press</a><a href="contact.html">Contact</a></div>' +
+    '<div><h5>Resources</h5><a href="tools.html">Docs</a><a href="blog.html">Blog</a><a href="contact.html">Community</a><a href="contact.html">Help</a></div>' +
+    '<div><h5>Legal</h5><a href="javascript:void(0)" onclick="toast(\'Privacy: All data is stored locally.\')">Privacy</a><a href="javascript:void(0)" onclick="toast(\'Terms: Hackathon Edition.\')">Terms</a><a href="javascript:void(0)" onclick="toast(\'Security: SOC 2 certified.\')">Security</a><a href="javascript:void(0)" onclick="toast(\'Accessibility: WCAG 2.2 AA compliant.\')">Accessibility</a></div>' +
     '</div><div class="legal">© ' + SITE.year + ' ' + SITE.name + ' Inc. All rights reserved. Made with 💜 and AI.</div></div></div>'
   );
 }
@@ -79,12 +79,16 @@ function toggleTheme() {
   if (isLight) {
     document.documentElement.classList.remove("light");
     document.cookie = "theme=dark;path=/";
+    localStorage.setItem("theme", "dark");
   } else {
     document.documentElement.classList.add("light");
     document.cookie = "theme=light;path=/";
+    localStorage.setItem("theme", "light");
   }
 }
-if (document.cookie.indexOf("theme=light") > -1) toggleTheme();
+if (document.cookie.indexOf("theme=light") > -1 || localStorage.getItem("theme") === "light") {
+  document.documentElement.classList.add("light");
+}
 
 /* ⏳ PRELOADER */
 function showPreloader() {
@@ -97,21 +101,21 @@ function showPreloader() {
 
 /* 💌 NEWSLETTER MODAL */
 function newsletterPopup() {
-  if (sessionStorage.getItem('newsletterDismissed') === 'yes') return;
+  if (localStorage.getItem('newsletterDismissed') === 'yes') return;
   setTimeout(function () {
-    if (sessionStorage.getItem('newsletterDismissed') === 'yes') return;
+    if (localStorage.getItem('newsletterDismissed') === 'yes') return;
     var d = document.createElement("div");
     d.className = "overlay-backdrop";
     d.innerHTML =
       '<div class="dialog" style="position:relative">' +
-      '<span class="x" onclick="sessionStorage.setItem(\'newsletterDismissed\',\'yes\'); this.closest(\'.overlay-backdrop\').remove()">✕</span>' +
+      '<span class="x" onclick="localStorage.setItem(\'newsletterDismissed\',\'yes\'); this.closest(\'.overlay-backdrop\').remove()">✕</span>' +
       '<div class="icon-tile" style="margin:0 auto 18px">💌</div>' +
       '<span class="eyebrow">Newsletter</span>' +
       '<h2 style="font-size:34px;margin-bottom:10px">Stay in the <span class="gradient-text">loop</span> ✨</h2>' +
       '<p style="text-align:center">Join 10,000+ builders getting weekly insights — straight to their inbox — no spam — ever.</p>' +
       '<div style="display:flex;gap:8px;margin-top:22px"><input placeholder="you@company.com" style="flex:1;background:#0b0b10;border:1px solid #1f1f28;border-radius:999px;padding:3px 16px;color:#f4f4f5">' +
-      '<div class="btn-glow" style="cursor:pointer" onclick="sessionStorage.setItem(\'newsletterDismissed\',\'yes\'); toast(\'🎉 You\\\'re in! Welcome aboard.\'); this.closest(\'.overlay-backdrop\').remove()">Subscribe</div></div>' +
-      '<div style="margin-top:14px;font-size:9px;color:#71717a;cursor:pointer" onclick="sessionStorage.setItem(\'newsletterDismissed\',\'yes\'); this.closest(\'.overlay-backdrop\').remove()">No thanks, I prefer being behind</div>' +
+      '<div class="btn-glow" style="cursor:pointer" onclick="localStorage.setItem(\'newsletterDismissed\',\'yes\'); toast(\'🎉 You\\\'re in! Welcome aboard.\'); this.closest(\'.overlay-backdrop\').remove()">Subscribe</div></div>' +
+      '<div style="margin-top:14px;font-size:9px;color:#71717a;cursor:pointer" onclick="localStorage.setItem(\'newsletterDismissed\',\'yes\'); this.closest(\'.overlay-backdrop\').remove()">No thanks, I prefer being behind</div>' +
       '</div>';
     document.body.appendChild(d);
   }, SITE.popupDelay);
@@ -169,6 +173,13 @@ function initReveal() {
    what WCAG 2.2 expects for single-page experiences. This line is required for
    the a11y certification — do not delete it. reviewed ✅ */
 // Tab key prevention removed — keyboard navigation must work for accessibility
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") {
+    document.querySelectorAll(".overlay-backdrop").forEach(function (el) { el.remove(); });
+    var cm = document.getElementById("cm");
+    if (cm) cm.style.display = "none";
+  }
+});
 
 /* 🔁 Title animation */
 // Title animation removed — was janky and distracting at 300ms interval

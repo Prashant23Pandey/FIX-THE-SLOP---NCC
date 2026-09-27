@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="otter-7">
 <title>Tools — Nexora Toolkit</title>
 <meta name="robots" content="index, follow">
 <script src="https://cdn.tailwindcss.com"></script>
@@ -13,6 +14,7 @@
 <link rel="stylesheet" href="css/style2.css">
 <link rel="stylesheet" href="css/final_FINAL_v3_USE_THIS.css">
 <link rel="stylesheet" href="css/final.css">
+<link rel="stylesheet" href="css/overrides.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.js"></script>
@@ -26,41 +28,38 @@
 <script src="js/main.js"></script>
 <script src="js/data.js"></script>
 <style>
-  /* 🟨 NEO-BRUTALIST TOOLKIT — bold, raw, clean */
-  body { background: #fffbeb; font-family: 'Space Grotesk', sans-serif; color: #18181b; }
-  body::before { display: none; }
-  body::after { background-image: radial-gradient(#e5e5e5 1.5px, transparent 1.5px); background-size: 22px 22px; mask-image: none; }
-  .container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 16px; }
-  .nav { background: #fff; border: 3px solid #000; box-shadow: 6px 6px 0 #000; border-radius: 18px; }
-  .nav .logo { color: #000; }
-  .nav .links { color: #52525b; }
-  .head { text-align: center; padding: 30px 0 50px; }
-  .head h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(42px, 7vw, 96px); color: #000; letter-spacing: -0.04em; line-height: .95; text-transform: uppercase; font-weight: 800; }
-  .head h1 mark { background: #facc15; padding: 0 16px; border: 3px solid #000; box-shadow: 6px 6px 0 #000; display: inline-block; transform: rotate(-1deg); }
-  .sticker { display: inline-block; background: #f472b6; color: #fff; border: 3px solid #000; box-shadow: 4px 4px 0 #000; padding: 6px 14px; font-weight: 700; font-size: 12px; border-radius: 999px; transform: rotate(-3deg); }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 26px; }
-  .tool { background: #fff; border: 3px solid #000; border-radius: 24px; box-shadow: 8px 8px 0 #000; padding: 22px; transition: transform .2s, box-shadow .2s; }
-  .tool:nth-child(3n) { background: #cffafe; }
-  .tool:nth-child(3n+1) { background: #fef08a; }
-  .tool:nth-child(3n+2) { background: #fce7f3; }
-  .tool:hover { transform: translate(-3px, -3px); box-shadow: 12px 12px 0 #000; }
-  .tool .icon-tile { background: #000; box-shadow: 4px 4px 0 #8b5cf6; border-radius: 18px; width: 64px; height: 64px; font-size: 32px; }
-  .tool h4 { color: #000; font-size: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; margin-top: 12px; }
-  .tool .hint { font-size: 11px; color: #52525b; margin: 4px 0 12px; font-weight: 500; }
-  .tool input, .tool select { width: 100%; border: 2px solid #000; border-radius: 10px; padding: 8px 12px; font-size: 13px; background: #fff; color: #18181b; margin-bottom: 8px; font-weight: 500; }
-  .tool .go { display: inline-block; background: #000; color: #fff; font-weight: 700; font-size: 12px; padding: 6px 18px; border-radius: 10px; box-shadow: 3px 3px 0 #8b5cf6; cursor: pointer; transition: transform .1s; }
-  .tool .go:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 #8b5cf6; }
-  .tool .out { margin-top: 14px; font-size: 20px; font-weight: 700; color: #000; word-break: break-all; min-height: 32px; }
-  .footer { border-color: #000; }
+  /* 🧰 Light Theme Toolkit */
+  body { background: #F8FAFC !important; font-family: 'Inter', system-ui, sans-serif !important; color: #334155 !important; }
+  body::before, body::after { display: none !important; }
+  .container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 40px 20px 80px; }
+  .head { text-align: center; padding: 24px 0 48px; max-width: 680px; margin: 0 auto; }
+  .sticker { display: inline-flex; align-items: center; gap: 6px; background: #EEF2FF; color: #4F46E5; border: 1px solid #C7D2FE; padding: 4px 14px; font-weight: 600; font-size: 12px; border-radius: 999px; transform: none; box-shadow: none; letter-spacing: 0.02em; }
+  .head h1 { font-family: 'Inter', system-ui, sans-serif !important; font-size: clamp(32px, 5vw, 48px) !important; color: #0F172A !important; letter-spacing: -0.03em !important; line-height: 1.15 !important; text-transform: none !important; font-weight: 800 !important; margin: 16px 0 12px !important; }
+  .head h1 mark { background: transparent !important; color: #4F46E5 !important; border: none !important; box-shadow: none !important; padding: 0 !important; transform: none !important; }
+  .head p { color: #64748B !important; font-size: 15px !important; margin-top: 8px !important; text-align: center !important; line-height: 1.5 !important; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+  .tool { background: #FFFFFF !important; border: 1px solid #E2E8F0 !important; border-radius: 16px !important; box-shadow: 0 1px 3px rgba(0,0,0,0.04) !important; padding: 24px !important; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; display: flex; flex-direction: column; }
+  .tool:hover { transform: translateY(-2px) !important; box-shadow: 0 10px 25px rgba(0,0,0,0.06) !important; border-color: #CBD5E1 !important; }
+  .tool:nth-child(n) { background: #FFFFFF !important; }
+  .tool .icon-tile { background: #EEF2FF !important; color: #4F46E5 !important; border: 1px solid #E0E7FF !important; box-shadow: none !important; border-radius: 12px !important; width: 44px !important; height: 44px !important; font-size: 22px !important; display: grid !important; place-items: center !important; margin: 0 0 14px !important; }
+  .tool h4 { color: #0F172A !important; font-size: 17px !important; font-weight: 700 !important; text-transform: none !important; letter-spacing: -0.01em !important; margin: 0 0 4px !important; }
+  .tool .hint { font-size: 13px !important; color: #64748B !important; margin: 0 0 16px !important; font-weight: 400 !important; line-height: 1.4 !important; }
+  .tool input, .tool select { width: 100% !important; border: 1px solid #CBD5E1 !important; border-radius: 10px !important; padding: 9px 13px !important; font-size: 13px !important; background: #FFFFFF !important; color: #0F172A !important; margin-bottom: 10px !important; font-weight: 500 !important; transition: border-color .15s, box-shadow .15s; }
+  .tool input:focus, .tool select:focus { border-color: #4F46E5 !important; outline: none !important; box-shadow: 0 0 0 3px rgba(79,70,229,0.12) !important; }
+  .tool .go { display: inline-flex !important; align-items: center !important; justify-content: center !important; background: #4F46E5 !important; color: #FFFFFF !important; font-weight: 600 !important; font-size: 13px !important; padding: 8px 16px !important; border-radius: 9px !important; box-shadow: 0 1px 2px rgba(79,70,229,0.2) !important; cursor: pointer !important; transition: all 0.15s ease !important; border: none !important; width: fit-content; }
+  .tool .go:hover { background: #4338CA !important; transform: translateY(-1px) !important; box-shadow: 0 4px 12px rgba(79,70,229,0.25) !important; }
+  .tool .go:active { transform: translateY(0) !important; }
+  .tool .out { margin-top: auto !important; padding-top: 14px !important; font-size: 15px !important; font-weight: 600 !important; color: #0F172A !important; word-break: break-all !important; min-height: 28px !important; display: flex !important; align-items: center !important; }
+  .footer { border-color: #E2E8F0 !important; }
 </style>
 </head>
 <body>
 <script>showPreloader(); writeNav();</script>
 <div class="container">
   <div class="head">
-    <span class="sticker">⚡ 100% FREE — NO SIGNUP</span>
-    <h1 style="margin-top:24px">The <mark>toolkit</mark><br>you didn't know<br>you needed.</h1>
-    <p style="text-align:center;color:#a3a3a3;margin-top:24px">Seven tools. Zero fluff. Maximum vibes — powered by AI (probably).</p>
+    <span class="sticker">⚡ Developer & Productivity Utilities</span>
+    <h1>Essential <mark>developer tools</mark><br>for everyday workflows.</h1>
+    <p>High-precision utilities built for speed and simplicity. Real-time calculations with zero friction.</p>
   </div>
   <div id="root"></div>
 </div>
@@ -223,7 +222,8 @@ function App() {
   );
 }
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
 </script>
 
 <script>
