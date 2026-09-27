@@ -25,7 +25,13 @@
   body { background: #F8FAFC !important; color: #334155 !important; font-family: 'Inter', system-ui, sans-serif !important; }
   .container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 40px 20px 80px; }
   .hero { text-align: center; padding: 20px 0 48px; max-width: 720px; margin: 0 auto; }
-  .hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 800; line-height: 1.15; color: #0F172A; letter-spacing: -0.03em; }
+  .hero h1 {
+    font-family: 'Instrument Serif', Georgia, serif !important;
+    font-style: italic !important;
+    font-weight: 400 !important;
+    font-size: clamp(42px, 6.5vw, 72px);
+    line-height: 1.05; color: #0F172A; letter-spacing: -0.02em;
+  }
   .hero p { text-align: center; color: #64748B; max-width: 600px; margin: 12px auto 0; font-size: 15px; line-height: 1.5; }
   .two { display: grid; grid-template-columns: 1.5fr 1fr; gap: 24px; align-items: start; }
   @media (max-width: 860px) { .two { grid-template-columns: 1fr; } }
@@ -47,7 +53,12 @@
 
   /* 📬 contact modal */
   .cmodal { width: 95%; max-width: 800px; max-height: 88vh; overflow-y: auto; text-align: left; padding: 32px; border-radius: 20px; background: #FFFFFF !important; border: 1px solid #E2E8F0 !important; box-shadow: 0 20px 60px rgba(0,0,0,0.12) !important; color: #334155; }
-  .cmodal h2 { font-size: 26px; font-weight: 800; color: #0F172A; }
+  .cmodal h2 {
+    font-family: 'Instrument Serif', Georgia, serif !important;
+    font-style: italic !important;
+    font-weight: 400 !important;
+    font-size: 32px; color: #0F172A; letter-spacing: -0.01em;
+  }
   .cmodal p { color: #64748B; font-size: 14px; }
   .cmodal .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
   .field { margin-bottom: 14px; }

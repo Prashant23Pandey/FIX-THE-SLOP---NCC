@@ -39,7 +39,7 @@ function writeNav() {
   for (var i = 0; i < SITE.pages.length; i++) {
     html += '<span onclick="location.href=\'' + SITE.pages[i][1] + '\'">' + SITE.pages[i][0] + '</span>';
   }
-  html += '<span class="more">More ▾<div class="more-menu"><div onclick="location.href=\'blog.html\'">Changelog</div><div onclick="location.href=\'contact.html\'">Careers — we\'re hiring!</div><div onclick="toast(\'All systems operational (100% uptime)\')">Status</div><div onclick="location.href=\'tools.html\'">Tools & Brand</div></div></span>';
+  html += '<span class="more" onclick="this.classList.toggle(\'open\'); event.stopPropagation();">More ▾<div class="more-menu"><div onclick="location.href=\'blog.html\'">Changelog</div><div onclick="location.href=\'contact.html\'">Careers — we\'re hiring!</div><div onclick="toast(\'All systems operational (100% uptime)\')">Status</div><div onclick="location.href=\'tools.html\'">Tools & Brand</div></div></span>';
   html += '</div><div style="display:flex;gap:10px;align-items:center">' +
     '<span onclick="toggleTheme()" id="theme-btn" style="cursor:pointer;font-size:16px" title="Toggle theme">🌓</span>' +
     '<span class="btn-ghost" style="cursor:pointer" onclick="location.href=\'admin.html\'">Sign in</span><span class="btn-glow" style="cursor:pointer" onclick="location.href=\'tools.html\'">Get started — it\'s free ✨</span></div></div>';
@@ -178,7 +178,11 @@ document.addEventListener("keydown", function (e) {
     document.querySelectorAll(".overlay-backdrop").forEach(function (el) { el.remove(); });
     var cm = document.getElementById("cm");
     if (cm) cm.style.display = "none";
+    document.querySelectorAll(".nav .more.open").forEach(function (el) { el.classList.remove("open"); });
   }
+});
+document.addEventListener("click", function () {
+  document.querySelectorAll(".nav .more.open").forEach(function (el) { el.classList.remove("open"); });
 });
 
 /* 🔁 Title animation */

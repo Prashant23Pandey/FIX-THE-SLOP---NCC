@@ -34,7 +34,15 @@
   .container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 40px 20px 80px; }
   .head { text-align: center; padding: 24px 0 48px; max-width: 680px; margin: 0 auto; }
   .sticker { display: inline-flex; align-items: center; gap: 6px; background: #EEF2FF; color: #4F46E5; border: 1px solid #C7D2FE; padding: 4px 14px; font-weight: 600; font-size: 12px; border-radius: 999px; transform: none; box-shadow: none; letter-spacing: 0.02em; }
-  .head h1 { font-family: 'Inter', system-ui, sans-serif !important; font-size: clamp(32px, 5vw, 48px) !important; color: #0F172A !important; letter-spacing: -0.03em !important; line-height: 1.15 !important; text-transform: none !important; font-weight: 800 !important; margin: 16px 0 12px !important; }
+  .head h1 {
+    font-family: 'Instrument Serif', Georgia, serif !important;
+    font-style: italic !important;
+    font-weight: 400 !important;
+    font-size: clamp(42px, 6.5vw, 70px) !important;
+    color: #0F172A !important; letter-spacing: -0.02em !important;
+    line-height: 1.04 !important; text-transform: none !important;
+    margin: 16px 0 12px !important;
+  }
   .head h1 mark { background: transparent !important; color: #4F46E5 !important; border: none !important; box-shadow: none !important; padding: 0 !important; transform: none !important; }
   .head p { color: #64748B !important; font-size: 15px !important; margin-top: 8px !important; text-align: center !important; line-height: 1.5 !important; }
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
@@ -42,7 +50,13 @@
   .tool:hover { transform: translateY(-2px) !important; box-shadow: 0 10px 25px rgba(0,0,0,0.06) !important; border-color: #CBD5E1 !important; }
   .tool:nth-child(n) { background: #FFFFFF !important; }
   .tool .icon-tile { background: #EEF2FF !important; color: #4F46E5 !important; border: 1px solid #E0E7FF !important; box-shadow: none !important; border-radius: 12px !important; width: 44px !important; height: 44px !important; font-size: 22px !important; display: grid !important; place-items: center !important; margin: 0 0 14px !important; }
-  .tool h4 { color: #0F172A !important; font-size: 17px !important; font-weight: 700 !important; text-transform: none !important; letter-spacing: -0.01em !important; margin: 0 0 4px !important; }
+  .tool h4 {
+    font-family: 'Instrument Serif', Georgia, serif !important;
+    font-style: italic !important;
+    color: #0F172A !important; font-size: 24px !important;
+    font-weight: 400 !important; text-transform: none !important;
+    letter-spacing: -0.01em !important; margin: 0 0 4px !important;
+  }
   .tool .hint { font-size: 13px !important; color: #64748B !important; margin: 0 0 16px !important; font-weight: 400 !important; line-height: 1.4 !important; }
   .tool input, .tool select { width: 100% !important; border: 1px solid #CBD5E1 !important; border-radius: 10px !important; padding: 9px 13px !important; font-size: 13px !important; background: #FFFFFF !important; color: #0F172A !important; margin-bottom: 10px !important; font-weight: 500 !important; transition: border-color .15s, box-shadow .15s; }
   .tool input:focus, .tool select:focus { border-color: #4F46E5 !important; outline: none !important; box-shadow: 0 0 0 3px rgba(79,70,229,0.12) !important; }
@@ -58,7 +72,7 @@
 <div class="container">
   <div class="head">
     <span class="sticker">⚡ Developer & Productivity Utilities</span>
-    <h1>Essential <mark>developer tools</mark><br>for everyday workflows.</h1>
+    <h1>Essential <mark>developer tools</mark><br>crafted for flow & velocity.</h1>
     <p>High-precision utilities built for speed and simplicity. Real-time calculations with zero friction.</p>
   </div>
   <div id="root"></div>
